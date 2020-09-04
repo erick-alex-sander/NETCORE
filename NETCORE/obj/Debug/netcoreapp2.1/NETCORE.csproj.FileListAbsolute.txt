@@ -1,0 +1,14 @@
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\bin\Debug\netcoreapp2.1\NETCORE.deps.json
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\bin\Debug\netcoreapp2.1\NETCORE.runtimeconfig.json
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\bin\Debug\netcoreapp2.1\NETCORE.runtimeconfig.dev.json
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\bin\Debug\netcoreapp2.1\NETCORE.dll
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\bin\Debug\netcoreapp2.1\NETCORE.pdb
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\obj\Debug\netcoreapp2.1\NETCORE.csproj.CoreCompileInputs.cache
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\obj\Debug\netcoreapp2.1\NETCORE.RazorAssemblyInfo.cache
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\obj\Debug\netcoreapp2.1\NETCORE.RazorAssemblyInfo.cs
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\obj\Debug\netcoreapp2.1\NETCORE.AssemblyInfoInputs.cache
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\obj\Debug\netcoreapp2.1\NETCORE.AssemblyInfo.cs
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\obj\Debug\netcoreapp2.1\NETCORE.RazorTargetAssemblyInfo.cache
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\obj\Debug\netcoreapp2.1\NETCORE.dll
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\obj\Debug\netcoreapp2.1\NETCORE.pdb
+C:\Users\ThinkPad\Source\Repos\NETCORE\NETCORE\obj\Debug\netcoreapp2.1\NETCORE.csprojAssemblyReference.cache
