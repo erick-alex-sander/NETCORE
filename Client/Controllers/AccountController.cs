@@ -92,7 +92,7 @@ namespace Client.Controllers
                 Host = "smtp.gmail.com",
                 EnableSsl = true,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("eacoldmelon72@gmail.com", "cupcakepancake"),
+                Credentials = new NetworkCredential("someone@domain.com", "yourpassword"),
                 DeliveryMethod = SmtpDeliveryMethod.Network
             };
 
