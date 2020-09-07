@@ -53,6 +53,7 @@ namespace Client
             app.UseCookiePolicy();
             app.UseSession();
             app.UseMvc();
+            app.UseStatusCodePages();
 
             app.UseMvc(routes =>
             {

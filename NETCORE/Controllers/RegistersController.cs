@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NETCORE.Repositories;
@@ -22,10 +23,14 @@ namespace NETCORE.Controllers
         }
 
         // GET: api/Registers
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet]
         public Task<IEnumerable<ProfileViewModel>> Get()
         {
+            
             return _repository.Get();
+            
+            
         }
 
         // GET: api/Registers/5

@@ -98,7 +98,7 @@ namespace Client.Controllers
 
             MailMessage message = new MailMessage
             {
-                From = new MailAddress("eacoldmelon72@gmail.com"),
+                From = new MailAddress("eacoldmelon72@gmail.com", "donotreplyplz@admin.com"),
                 IsBodyHtml = true,
                 Subject = "Registration Verification at: " + DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss")
             };
@@ -131,7 +131,8 @@ namespace Client.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("Role");
-            return View("Login", "Account");
+            HttpContext.Session.Clear();
+            return Redirect("./Login");
         }
 
         public static string GenerateOTP()
