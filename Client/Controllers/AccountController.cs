@@ -53,17 +53,21 @@ namespace Client.Controllers
                     var handler = new JwtSecurityTokenHandler();
                     var jsonToken = handler.ReadToken(stream);
                     var tokenS = handler.ReadToken(stream) as JwtSecurityToken;
-                    var data = tokenS.Claims.ToList();
+                    //var data = tokenS.Claims.ToList();
                     var userName = tokenS.Claims.First(claim => claim.Type == "UserName").Value;
                     var role = tokenS.Claims.First(claim => claim.Type == "Role").Value;
                     var firstName = tokenS.Claims.First(claim => claim.Type == "FirstName").Value;
                     var lastName = tokenS.Claims.First(claim => claim.Type == "LastName").Value;
+
+                    var auth = "Bearer " + stream;
+
                     //HttpContext.Session.SetString("Id", account.Id);
                     HttpContext.Session.SetString("UserName", userName);
                     //HttpContext.Session.SetString("Email", account.Email);
                     HttpContext.Session.SetString("Role", role);
                     HttpContext.Session.SetString("FirstName", firstName);
                     HttpContext.Session.SetString("LastName", lastName);
+                    HttpContext.Session.SetString("token", auth);
                     //HttpContext.Session.SetString("Phone", account.Phone);
 
                     return Redirect("../Home");

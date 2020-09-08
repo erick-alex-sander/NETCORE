@@ -45,6 +45,7 @@ namespace NETCORE
             services.AddIdentity<User, Role>().AddEntityFrameworkStores<MyContext>();
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IRolesRepository, RolesRepository>();
+            services.AddScoped<DepartmentRepository>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
