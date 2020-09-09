@@ -3,7 +3,7 @@
 function callTable() {
     table = $('#myTable').DataTable({
         "ajax": {
-            'url': "/Departments/Load",
+            'url': "/Divisions/Load",
             'type': "GET",
             'dataType': "json",
             'dataSrc': ""
@@ -14,6 +14,7 @@ function callTable() {
                 "data": "id", defaultContent: ''
             },
             { "data": "name" },
+            { "data": "department.name" },
             {
                 "data": "createdDate",
                 "render": function (jsonDate) {
@@ -54,28 +55,59 @@ function callTable() {
     }).draw();
 }
 
-$(document).ready(function () {
-    debugger;
-    callTable();
-});
-
 $('#insertButton').click(function () {
     $('.clearFields').val('');
+    $.getJSON('/Departments/Load', { Id: $(this).val() }, function (data) {
+        var options = '';
+        for (var x = 0; x < data.length; x++) {
+            options += '<option value="' + data[x]['id'] + '">' + data[x]['name'] + '</option>';
+        }
+        $('#departmentId').html(options);
+    });
 });
+
+$(document).ready(function () {
+    debugger;
+    $('.select2').select2({
+        placeholder: "Select a department",
+        allowClear: true
+    });
+    callTable();
+    $.getJSON('/Departments/Load', { Id: $(this).val() }, function (data) {
+        var options = '';
+        for (var x = 0; x < data.length; x++) {
+            options += '<option value="' + data[x]['Id'] + '">' + data[x]['Name'] + '</option>';
+        }
+        $('#departmentId').html(options);
+    });
+});
+
+//$('#departmentId').on("click change", function () {
+//    $.getJSON('/Departments/Load', { Id: $(this).val() }, function (data) {
+//        var options = '';
+//        for (var x = 0; x < data.length; x++) {
+//            options += '<option value="' + data[x]['Id'] + '">' + data[x]['Name'] + '</option>';
+//        }
+//        $('#departmentId').html(options);
+//    });
+//})
 
 $('#insert').click(function () {
     debugger;
     $.ajax({
-        url: "/Departments/Insert/" + $('#departmentId').val(),
+        url: "/Divisions/Insert/" + $('#divisionId').val(),
         type: "post",
         data: {
-            'name': $('#departmentName').val()
+            'name': $('#divisionName').val(),
+            'department': {
+                'Id': $('#departmentId').children("option:selected").val()
+            }
         },
         dataType: "json",
         success: function (response) {
             if (response.success === true) {
                 swal.fire("Success!", "Data is inserted", "success");
-                table.ajax.reload(null, false);
+                table.ajax.reload();
                 $('.clearFields').val('');
             }
             else {
@@ -89,16 +121,17 @@ $('#insert').click(function () {
 
 });
 
-
 function Update(id) {
     debugger;
     $('#insertModal').modal('show');
     $.ajax({
-        url: "/Departments/Load/" + id,
+        url: "/Divisions/Load/" + id,
         type: "get",
         success: function (response) {
-            $('#departmentId').val(response.id);
-            $('#departmentName').val(response.name);
+            $('#divisionId').val(response.id);
+            $('#divisionName').val(response.name);
+            $('#departmentId').val(response.department.id);
+            $('#departmentId').trigger('change');
         }
     });
 };
@@ -113,20 +146,19 @@ function Delete(id) {
         confirmButtonColor: '#d33',
         cancelButtonColor: '#3085d6',
         reverseButtons: true,
-        
     }).then((willDelete) => {
         if (willDelete.isConfirmed) {
             $.ajax({
-                url: "/Departments/Delete/" + id,
+                url: "/Divisions/Delete/" + id,
                 type: "post",
                 success: function (result) {
-                    
+
                 }
             });
             swal.fire("Your file has been deleted!", {
                 icon: "success",
             });
-            table.ajax.reload(null, false);
+            table.ajax.reload();
         } else {
 
         }

@@ -19,6 +19,7 @@ namespace NETCORE.Contexts
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Department> Departments { get; set; } 
+        public DbSet<Division> Divisions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,6 +35,15 @@ namespace NETCORE.Contexts
                 .HasOne(ur => ur.Role)
                 .WithMany(r => r.UserRoles)
                 .HasForeignKey(ur => ur.RoleId);
+
+            modelBuilder.Entity<Department>()
+                .HasIndex(d => d.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<Division>()
+                .HasIndex(d => d.Name)
+                .IsUnique();
+
         }
     }
 }

@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20200902040726_addGUIDuserrole.Designer.cs" />
     <Compile Remove="Migrations\20200902055300_addmodelmanymany.cs" />
     <Compile Remove="Migrations\20200902055300_addmodelmanymany.Designer.cs" />
+    <Compile Remove="Migrations\20200909043909_addModel33.cs" />
+    <Compile Remove="Migrations\20200909043909_addModel33.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

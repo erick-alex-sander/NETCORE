@@ -14,13 +14,13 @@ namespace NETCORE.Repositories
         where TEntity : class, BaseModel
         where TContext : MyContext
     {
-        private MyContext _context;
+        protected internal MyContext _context;
         public GeneralRepository(MyContext context)
         {
             _context = context;
         }
 
-        public async Task<int> Create(TEntity entity)
+        public virtual async Task<int> Create(TEntity entity)
         {
             entity.CreatedDate = DateTimeOffset.Now;
             await _context.Set<TEntity>().AddAsync(entity);
@@ -64,7 +64,7 @@ namespace NETCORE.Repositories
             return null;
         }
 
-        public async Task<int> Update(int id, TEntity entity)
+        public virtual async Task<int> Update(int id, TEntity entity)
         {
             var update = await _context.Set<TEntity>().Where(s => s.isDelete == false && s.Id == id).SingleOrDefaultAsync();
             if (update == null)

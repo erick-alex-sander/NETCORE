@@ -34,7 +34,7 @@ namespace NETCORE.Base
             var post = await _repo.Create(entity);
             if(post > 0)
             {
-                return Ok("I love u full");
+                return Ok(post);
             }
             return BadRequest(post);
         }
