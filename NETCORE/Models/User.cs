@@ -11,8 +11,7 @@ namespace NETCORE.Models
     [Table("tb_m_user")]
     public class User : IdentityUser
     {
-
-
+        
         public virtual Biodata Biodata { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
         

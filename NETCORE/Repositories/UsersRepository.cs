@@ -65,7 +65,8 @@ namespace NETCORE.Repositories
                     biodata.FirstName = userView.FirstName;
                     biodata.LastName = userView.Lastname;
                     biodata.Address = userView.Address;
-                    biodata.Id = user.Id;
+                    biodata.CreatedAt = DateTimeOffset.Now;
+                    
                     _context.Biodatas.Add(biodata);
                     _context.SaveChanges();
                     return 1;
@@ -91,7 +92,8 @@ namespace NETCORE.Repositories
             try
             {
                 var deleteUser = _context.Users.Single(u => u.UserName == id);
-                _context.Users.Remove(deleteUser);
+                var delete = _context.Biodatas.Single(b => b.Id == deleteUser.Id);
+                delete.IsDelete = true;
                 _context.SaveChanges();
                 return 1;
             }
@@ -109,6 +111,7 @@ namespace NETCORE.Repositories
                     .Include(b => b.Biodata)
                     .Include(ur => ur.UserRoles)
                     .ThenInclude(r => r.Role)
+                    .Where(u => u.Biodata.IsDelete == false)
                     .ToListAsync();
 
                 List<ProfileViewModel> profileList = new List<ProfileViewModel>();
@@ -123,6 +126,12 @@ namespace NETCORE.Repositories
                         Address = get.Biodata.Address,
                         Email = get.Email,
                         PhoneNumber = get.PhoneNumber,
+                        BirthDate = get.Biodata.BirthDate,
+                        University = get.Biodata.University,
+                        Skill = get.Biodata.Skills,
+                        Title = get.Biodata.Title,
+                        CreatedDate = get.Biodata.CreatedAt,
+                        UpdatedDate = get.Biodata.UpdatedAt,
                         Role = _context.Roles.Where(r => r.UserRoles.Any(ur => ur.UserId == get.Id)).Select(r => r.Name).ToArray()
                     };
 
@@ -141,6 +150,9 @@ namespace NETCORE.Repositories
         {
             var get = await _context.Users
                     .Include(b => b.Biodata)
+                    .Include(ur => ur.UserRoles)
+                    .ThenInclude(r => r.Role)
+                    .Where(u => u.Biodata.IsDelete == false)
                     .SingleOrDefaultAsync(u => u.UserName == id);
 
             ProfileViewModel profile = new ProfileViewModel()
@@ -151,7 +163,13 @@ namespace NETCORE.Repositories
                 Address = get.Biodata.Address,
                 Email = get.Email,
                 PhoneNumber = get.PhoneNumber,
-                Role = null
+                BirthDate = get.Biodata.BirthDate,
+                University = get.Biodata.University,
+                Skill = get.Biodata.Skills,
+                Title = get.Biodata.Title,
+                CreatedDate = get.Biodata.CreatedAt,
+                UpdatedDate = get.Biodata.UpdatedAt,
+                Role = _context.Roles.Where(r => r.UserRoles.Any(ur => ur.UserId == get.Id)).Select(r => r.Name).ToArray()
             };
 
             return profile;

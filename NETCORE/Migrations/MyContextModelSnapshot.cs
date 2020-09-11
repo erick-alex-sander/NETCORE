@@ -26,10 +26,24 @@ namespace NETCORE.Migrations
                     b.Property<string>("Address")
                         .IsRequired();
 
+                    b.Property<DateTime>("BirthDate");
+
+                    b.Property<DateTimeOffset>("CreatedAt");
+
                     b.Property<string>("FirstName");
+
+                    b.Property<bool>("IsDelete");
 
                     b.Property<string>("LastName")
                         .IsRequired();
+
+                    b.Property<string>("Skills");
+
+                    b.Property<string>("Title");
+
+                    b.Property<string>("University");
+
+                    b.Property<DateTimeOffset>("UpdatedAt");
 
                     b.HasKey("Id");
 

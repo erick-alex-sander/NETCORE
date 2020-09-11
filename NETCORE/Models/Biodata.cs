@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NETCORE.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,7 +18,16 @@ namespace NETCORE.Models
         public string FirstName { get; set; }
         [Required]
         public string Address { get; set; }
+        public string Title { get; set; }
+        public string University { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string Skills { get; set; }
+
+        public DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset UpdatedAt { get; set; }
 
         public virtual User User { get; set; }
+        
+        public bool IsDelete { get; set; }
     }
 }

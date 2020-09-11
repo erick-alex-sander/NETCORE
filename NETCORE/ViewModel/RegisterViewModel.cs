@@ -32,6 +32,7 @@ namespace NETCORE
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+        
     }
 
     public class ProfileViewModel
@@ -42,6 +43,12 @@ namespace NETCORE
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string Skill { get; set; }
+        public string Title { get; set; }
+        public string University { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
+        public DateTimeOffset UpdatedDate { get; set; }
         public string[] Role { get; set; }
     }
 }

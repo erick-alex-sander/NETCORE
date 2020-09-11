@@ -18,7 +18,7 @@ function callTable() {
             {
                 "data": "createdDate",
                 "render": function (jsonDate) {
-                    var date = moment(jsonDate).format("DD MMMM YYYY");
+                    var date = moment(jsonDate).format("DD MMMM YYYY HH:mm:ss");
                     return date;
                 }
             },
@@ -26,7 +26,7 @@ function callTable() {
                 "data": "updatedDate",
                 "render": function (jsonDate) {
                     if (!moment(jsonDate).isBefore("1000-01-01")) {
-                        var date = moment(jsonDate).format("DD MMMM YYYY");
+                        var date = moment(jsonDate).format("DD MMMM YYYY HH:mm:ss");
                         return date;
                     }
                     return "Not updated yet";
@@ -46,13 +46,36 @@ function callTable() {
             "orderable": false,
             "targets": 0
         }],
-        "order": [[1, 'asc']]
+        "order": [[1, 'asc']],
+
+        initComplete: function () {
+            this.api().columns(2).every(function () {
+                var column = this;
+                var select = $('<select><option value="">All Departments</option></select>')
+                    .appendTo($(column.header()).empty())
+                    .on('change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+
+                        column
+                            .search(val ? '^' + val + '$' : '', true, false)
+                            .draw();
+                    });
+
+                column.data().unique().sort().each(function (d, j) {
+                    select.append('<option value="' + d + '">' + d + '</option>')
+                });
+            });
+        }
     });
+
     table.on('order.dt search.dt', function () {
         table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
             cell.innerHTML = i + 1;
         });
     }).draw();
+    
 }
 
 $('#insertButton').click(function () {
@@ -74,7 +97,7 @@ $(document).ready(function () {
     });
     callTable();
     $.getJSON('/Departments/Load', { Id: $(this).val() }, function (data) {
-        var options = '';
+        var options = '<option></option>';
         for (var x = 0; x < data.length; x++) {
             options += '<option value="' + data[x]['Id'] + '">' + data[x]['Name'] + '</option>';
         }

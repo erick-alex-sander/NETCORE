@@ -17,7 +17,7 @@ function callTable() {
             {
                 "data": "createdDate",
                 "render": function (jsonDate) {
-                    var date = moment(jsonDate).format("DD MMMM YYYY");
+                    var date = moment(jsonDate).format("DD MMMM YYYY HH:mm:ss");
                     return date;
                 }
             },
@@ -25,7 +25,7 @@ function callTable() {
                 "data": "updatedDate",
                 "render": function (jsonDate) {
                     if (!moment(jsonDate).isBefore("1000-01-01")) {
-                        var date = moment(jsonDate).format("DD MMMM YYYY");
+                        var date = moment(jsonDate).format("DD MMMM YYYY HH:mm:ss");
                         return date;
                     }
                     return "Not updated yet";

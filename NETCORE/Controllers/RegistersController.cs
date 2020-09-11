@@ -23,7 +23,7 @@ namespace NETCORE.Controllers
         }
 
         // GET: api/Registers
-        [Authorize(AuthenticationSchemes = "Bearer")]
+        //[Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet]
         public Task<IEnumerable<ProfileViewModel>> Get()
         {

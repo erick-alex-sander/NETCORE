@@ -15,9 +15,10 @@ namespace Client.Controllers
         public IActionResult Index()
         {
             ViewData["Name"] = "Guest";
-            if (HttpContext.Session.GetString("Role") == "Sales")
+            if (HttpContext.Session.GetString("Role") == "Sales" || HttpContext.Session.GetString("Role") == "Admin")
             {
                 ViewData["Name"] = HttpContext.Session.GetString("FirstName") + " " + HttpContext.Session.GetString("LastName");
+                ViewData["Role"] = HttpContext.Session.GetString("Role");
                 return View();
             }
             return RedirectToAction("Login", "Account");

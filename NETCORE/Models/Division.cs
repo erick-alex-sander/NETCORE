@@ -13,6 +13,7 @@ namespace NETCORE.Models
     public class Division : BaseModel
     {
         private readonly ILazyLoader _lazyLoader;
+
         public Division()
         {
 
@@ -37,7 +38,6 @@ namespace NETCORE.Models
             get => _lazyLoader.Load(this, ref _department);
             set => _department = value;
         }
-
-        //public Department Department { get; set; }
+        
     }
 }
