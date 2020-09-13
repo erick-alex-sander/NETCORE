@@ -209,7 +209,7 @@ using Client.Models;
                                     ");
             EndContext();
             BeginContext(7904, 561, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a2bc2559fea4d648d78ca0afbde49df", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fc60ed48650744ed931efcfefaf496f0", async() => {
                 BeginContext(7934, 524, true);
                 WriteLiteral(@"
                                         <div class=""input-group input-group-sm mb-0"">
@@ -385,7 +385,7 @@ using Client.Models;
                                 ");
             EndContext();
             BeginContext(18147, 3313, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c5035124f584ef286b0badc41890abe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a4810f133c90437a912ca21240af9530", async() => {
                 BeginContext(18177, 3276, true);
                 WriteLiteral(@"
                                     <div class=""form-group row"">

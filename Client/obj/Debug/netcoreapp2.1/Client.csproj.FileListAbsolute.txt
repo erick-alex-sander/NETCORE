@@ -39,3 +39,4 @@ C:\Users\ThinkPad\Source\Repos\NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\View
 C:\Users\ThinkPad\Source\Repos\NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\Divisions\Index.g.cshtml.cs
 C:\Users\ThinkPad\Source\Repos\NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\Employees\Index.g.cshtml.cs
 C:\Users\ThinkPad\Source\Repos\NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\Charts\Index.g.cshtml.cs
+C:\Users\ThinkPad\Source\Repos\NETCORE\Client\obj\Debug\netcoreapp2.1\Razor\Views\Account\NotFound.g.cshtml.cs

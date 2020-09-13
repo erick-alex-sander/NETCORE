@@ -187,3 +187,33 @@ function Delete(id) {
         }
     });
 };
+
+$('#pdf').click(function () {
+    debugger;
+    $.ajax({
+        url: "/Reports/DivisionPdf/",
+        type: "get",
+        success: function (response) {
+            window.location = "/Reports/DivisionPdf/";
+        },
+        error: function () {
+            swal.fire("Error!", "Pdf is not downloaded", "error");
+        }
+    });
+
+});
+
+$('#excel').click(function () {
+    debugger;
+    $.ajax({
+        url: "/Reports/DivisionExcel/",
+        type: "get",
+        success: function (response) {
+            window.location = "/Reports/DivisionExcel/";
+        },
+        error: function () {
+            swal.fire("Error!", "Excel is not downloaded", "error");
+        }
+    });
+
+});

@@ -19,7 +19,11 @@ namespace Client.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("Role") == "Admin")
+            {
+                return View();
+            }
+            return Redirect("./NotFound");
         }
 
         public async Task<JsonResult> Load()

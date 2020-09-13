@@ -22,6 +22,11 @@ namespace Client.Controllers
             BaseAddress = new Uri("https://localhost:44384/api/")
         };
 
+        public IActionResult NotFound()
+        {
+            return View();
+        }
+
         public IActionResult Login()
         {
             return View();
